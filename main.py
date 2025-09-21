@@ -1,8 +1,10 @@
 from fastapi import FastAPI
+from routes.auth_route import router as user_router
+from db import engine
 
 app = FastAPI()
 
-@app.get("/hello")
-async def home():
-  return {"home": "E-learning platform"}
 
+
+# inclure les routes
+app.include_router(user_router, prefix="/api/auth")
